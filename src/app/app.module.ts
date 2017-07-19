@@ -2,33 +2,36 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
+import { NgbModule }     from '@ng-bootstrap/ng-bootstrap';
 
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { AppComponent }         from './components/app.component';
+import { AppHeaderComponent }   from './components/app-header/app-header.component';
+import { AppSidebarComponent }  from './components/app-sidebar/app-sidebar.component';
+import { AppMainComponent }     from './components/app-main/app-main.component';
 
-import { AppComponent }  from './app.component';
-import { HeroDetailComponent } from './hero-detail.component';
-import { HeroesComponent } from './heroes.component';
-import { DashboardComponent } from './dashboard.component';
-import { HeroService } from './hero.service';
+import { AppSearchComponent }   from './components/app-search/app-search.component';
+import { AppTestPageComponent}  from './components/app-test-page/app-test-page.component';
+import { WidgetService }        from './services/widget.service';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './router/app-routing.module';
 
 @NgModule({
   imports:      [
       BrowserModule,
       FormsModule,
       HttpModule,
-      InMemoryWebApiModule.forRoot(InMemoryDataService),
+      NgbModule.forRoot(),
       AppRoutingModule
   ],
   declarations: [
       AppComponent,
-      HeroDetailComponent,
-      HeroesComponent,
-      DashboardComponent
+      AppHeaderComponent,
+      AppTestPageComponent,
+      AppSidebarComponent,
+      AppMainComponent,
+      AppSearchComponent,
   ],
-    providers: [ HeroService ],
+    providers: [ WidgetService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
