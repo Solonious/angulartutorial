@@ -1,20 +1,18 @@
 <header class="row">
-            <section class="environment col-1">
+            <section class="environment col-2">
                 <select #softEnv
                         (change)="widgetService.setEnvData(softEnv.value);"
-                        class="custom-select mb-2 mr-sm-2 mb-sm-0"
-                        id="inlineFormCustomSelect">
+                        class="custom-select mb-2 mr-sm-2 mb-sm-0">
                     <option *ngFor="let item of widgetService.titles"
                             [value]="item.title">{{item.title}}
                     </option>
                 </select>
                 <h2 *ngIf="widgetService.env">{{widgetService.env.type}} soft</h2>
             </section>
-            <section class="environment col-1">
+            <section class="environment col-2">
                 <select #dataEnv
                         (change)="widgetService.setDataData(dataEnv.value);"
-                        class="custom-select mb-2 mr-sm-2 mb-sm-0"
-                        id="inlineFormCustomSelect">
+                        class="custom-select mb-2 mr-sm-2 mb-sm-0">
                     <option *ngFor="let item of widgetService.titles"
                             [value]="item.title">{{item.title}}
                     </option>

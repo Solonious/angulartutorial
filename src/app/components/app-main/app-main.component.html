@@ -3,8 +3,8 @@
 </section>
 <section *ngIf="widgetData">
 	<section class="row justify-content-between">
-		<h4 class="col-3">{{widgetData.translations[0].title}}</h4>
-		<section class="col-3 align-self-end">
+		<h4 class="col-4">{{widgetData.translations[0].title}}</h4>
+		<section class="col-4 align-self-end">
 			<button (click)="openInWindow(widgetData.module_name)">new window</button>
 			<button (click)="openInEditor(widgetData.module_name)">constructor</button>
 		</section>
