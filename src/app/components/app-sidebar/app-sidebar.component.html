@@ -1,8 +1,4 @@
 <section class="sidebar">
-	<div class="input-group search-input">
-		<span class="search"></span>
-		<input type="search" class="form-control" #heroName placeholder="Search widget..."/>
-	</div>
 	<ul>
 		<li *ngFor="let category of categories" >
             <span class="arrow" (click)="onSelectCategory(category);">
@@ -13,7 +9,7 @@
 				<li class="widget-link" *ngFor="let item of widgetsList" >
                     <a href=""
                        (click)="onSelectWidget(item);
-                        $event.preventDefault()"
+                        $event.preventDefault();"
                        [class.selected]="item === selectedWidget">{{item.title}}</a>
                 </li>
 			</ul>

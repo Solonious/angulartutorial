@@ -1,4 +1,7 @@
 <section class="row">
-	<app-sidebar (onGetData)="getData($event)" class="col-2"></app-sidebar>
-	<app-main [widgetData]="widgetData" class="col-7"></app-main>
+    <section class="col-2">
+        <app-search (onGetData)="setData($event);"></app-search>
+        <app-sidebar (onGetData)="setData($event);"></app-sidebar>
+    </section>
+    <app-main [widgetData]="widgetService.getData()" class="col-7"></app-main>
 </section>

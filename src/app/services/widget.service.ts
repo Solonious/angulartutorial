@@ -23,6 +23,7 @@ export class WidgetService {
         {title: 'TEST ENV.', url: 'https://freeserv.php-test.site.dukascopy.com', type: 'TEST'},
         {title: 'LIVE ENV.', url: 'https://freeserv.dukascopy.com', type: 'LIVE'}
     ];
+    widgetData: Widget;
     env: EnvTitle = this.titles[0];
     data: EnvTitle = this.titles[0];
     dataUrl: string = this.env.url || 'https://freeserv.php-test.site.dukascopy.com';
@@ -47,13 +48,18 @@ export class WidgetService {
             })
             .catch(this.handleError);
     }
-    private handleError(error: any): Observable<any> {
+    handleError(error: any): Observable<any> {
         console.error('An error occurred', error);
         return Observable.throw(error.message || error);
     }
-    getWidgets(category: string, limit: number): Observable<Widgets[]> {
-        return this.http.get(
-            `${this.apiUrl}widgets/list.json?limit=${limit}&category=${category}&offset=0`)
+    getWidgets(limit: number, category?: string): Observable<Widgets[]> {
+        var url;
+        if (category) {
+            url = `${this.apiUrl}widgets/list.json?limit=${limit}&category=${category}&offset=0`;
+        } else {
+            url = `${this.apiUrl}widgets/list.json?limit=${limit}`;
+        }
+        return this.http.get(url)
             .map(res => this.widgets = res.json().data);
     }
     getWidget(slug: string): Observable<Widget> {
@@ -61,8 +67,11 @@ export class WidgetService {
             .map(res => res.json() as Widget)
             .catch(this.handleError);
     }
-    getData(): Widgets[] {
-        return this.widgets;
+    setData(data: Widget): void {
+        this.widgetData = data;
+    }
+    getData(): Widget {
+        return this.widgetData;
     }
     createWidgetData(embedCode: string): WidgetData {
         const params = this.convertEmbedCodeToObject(embedCode);

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { WidgetService } from '../../services/widget.service';
+
 import { Widget } from '../../models/widget';
 
 @Component({
@@ -10,7 +12,8 @@ import { Widget } from '../../models/widget';
 
 export class AppTestPageComponent {
     widgetData: Widget;
-    getData(data: Widget): void {
-        this.widgetData = data;
+    constructor(public widgetService: WidgetService) {}
+    setData(data: Widget): void {
+        this.widgetService.setData(data);
     }
 }

@@ -26,13 +26,13 @@ export class AppSidebarComponent implements OnInit {
     ngOnInit(): void {
         this.getCategories();
     }
-    getCategories() {
+    getCategories(): void {
         this.widgetService.getCategories().subscribe(categories => this.categories = categories);
     }
     onSelectCategory(category: Categories): void {
         this.isActive = category !== this.selectedCategory ?
             true : !this.isActive;
-        this.widgetService.getWidgets(category.title, category.widgetsCount)
+        this.widgetService.getWidgets(category.widgetsCount, category.title)
             .subscribe(widgets => this.widgetsList = widgets);
         this.selectedCategory = category;
     }
@@ -45,5 +45,8 @@ export class AppSidebarComponent implements OnInit {
     }
     sendData(data: Widget): void {
         this.onGetData.emit(data);
+    }
+    setData(data: Widget): void {
+        this.widgetService.setData(data);
     }
 }

@@ -1,10 +1,16 @@
 <div id="search-component">
-	<h4>Hero Search</h4>
-	<input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-	<div>
-		<div *ngFor="let hero of heroes | async"
-			 (click)="gotoDetail(hero)" class="search-result" >
-			{{hero.name}}
-		</div>
-	</div>
+    <div class="input-group search-input">
+        <span class="search"></span>
+        <input #searchBox [(ngModel)]="query" class="form-control" id="search" placeholder="Search widget...">
+        <span [class.visible]="searchBox.value" (click)="searchBox.value = '';" class="close">&times;</span>
+    </div>
+    <div [class.visible]="searchBox.value" class="search-result">
+        <ul>
+            <li *ngFor="let item of widgets | FilterPipe: query">
+                <a href=""
+                   (click)="selectWidget(item);
+                   $event.preventDefault();">{{item.title}}</a>
+            </li>
+        </ul>
+    </div>
 </div>
