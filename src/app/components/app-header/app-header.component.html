@@ -1,7 +1,5 @@
 <header class="row">
-	<section class="col-3">
-        <section class="row">
-            <section class="environment">
+            <section class="environment col-1">
                 <select #softEnv
                         (change)="widgetService.setEnvData(softEnv.value);"
                         class="custom-select mb-2 mr-sm-2 mb-sm-0"
@@ -10,9 +8,9 @@
                             [value]="item.title">{{item.title}}
                     </option>
                 </select>
-                <h2>{{widgetService.env.type}} soft</h2>
+                <h2 *ngIf="widgetService.env">{{widgetService.env.type}} soft</h2>
             </section>
-            <section class="environment">
+            <section class="environment col-1">
                 <select #dataEnv
                         (change)="widgetService.setDataData(dataEnv.value);"
                         class="custom-select mb-2 mr-sm-2 mb-sm-0"
@@ -21,16 +19,12 @@
                             [value]="item.title">{{item.title}}
                     </option>
                 </select>
-                <h2>{{widgetService.data.type}} data</h2>
+                <h2 *ngIf="widgetService.env">{{widgetService.data.type}} data</h2>
+            </section>
+        <section class="col-7">
+            <section class="row justify-content-end">
+                <h2>release ver. 0.39.90</h2>
             </section>
         </section>
-	</section>
-	<section class="col-6">
-		<section class="row justify-content-end">
-			<h2>release ver. 0.39.90</h2>
-		</section>
-	</section>
+
 </header>
-<nav class="row align-items-center">
-    <a routerLink="/test" routerLinkActive="active">test</a>
-</nav>
