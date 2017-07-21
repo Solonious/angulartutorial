@@ -18,11 +18,11 @@ export class AppMainComponent {
     constructor(
         private widgetService: WidgetService
     ) {}
-    openInWindow(widget: string) {
-        this.widgetService.openInNewWindow(widget);
+    openInWindow(widget: string, url: string) {
+        this.widgetService.openInNewWindow(widget, url);
     }
-    openInEditor(widget: string) {
-        this.widgetService.showInEditor(widget);
+    openInEditor(widget: string, url: string) {
+        this.widgetService.showInEditor(widget, url);
     }
     createWidget(embedCode: string, envurl: string) {
             this.widgetFrameParams = this.widgetService.createWidgetData(embedCode, envurl);
