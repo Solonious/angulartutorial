@@ -19,14 +19,11 @@ export class WidgetService {
     private apiUrl = 'https://www.dukascopy.com/trading-tools/api/';
     private categoriesUrl = `categories/list.json`;
     widgets: Widgets[];
-    titles: EnvTitle[] = [
-        {title: 'TEST ENV.', url: 'https://freeserv.php-test.site.dukascopy.com', type: 'TEST'},
-        {title: 'LIVE ENV.', url: 'https://freeserv.dukascopy.com/2.0', type: 'LIVE'}
-    ];
     widgetData: Widget;
-    env: EnvTitle = this.titles[1];
-    data: EnvTitle = this.titles[0];
-    dataUrl: string = this.env.url || 'https://freeserv.php-test.site.dukascopy.com';
+    // env: EnvTitle = this.titles[1];
+    // data: EnvTitle = this.titles[0];
+    // dataUrl: string = this.env.url || 'https://freeserv.php-test.site.dukascopy.com';
+    envUrl: string;
     constructor(
         private http: Http,
         private sanitizer: DomSanitizer
@@ -73,13 +70,19 @@ export class WidgetService {
     getData(): Widget {
         return this.widgetData;
     }
-    createWidgetData(embedCode: string): WidgetData {
+    setUrl(url: string): void {
+        this.envUrl = url;
+    }
+    getUrl(): string {
+        return this.envUrl;
+    }
+    createWidgetData(embedCode: string, url: string): WidgetData {
         const params = this.convertEmbedCodeToObject(embedCode);
         const qs = Object.keys(params.params)
             .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(params.params[k])}`)
             .join('&');
         return {
-            dataSrc: this.sanitizer.bypassSecurityTrustResourceUrl(`${this.dataUrl}/?path=${params.type}/index&${qs}`),
+            dataSrc: this.sanitizer.bypassSecurityTrustResourceUrl(`${url}/?path=${params.type}/index&${qs}`),
             width: params.params.width,
             height: params.params.height
         };
@@ -94,11 +97,11 @@ export class WidgetService {
             console.log('Invalid JSON', err);
         }
     }
-    showInEditor(module_name: string): void {
-        this.windowOpen(`${this.dataUrl}/?path=widget_editor/${module_name}`);
+    showInEditor(module_name: string, url: string): void {
+        this.windowOpen(`${url}/?path=widget_editor/${module_name}`);
     }
-    openInNewWindow(module_name: string): void {
-        this.windowOpen(`${this.dataUrl}/?path=${module_name}/index`);
+    openInNewWindow(module_name: string, url: string): void {
+        this.windowOpen(`${url}/?path=${module_name}/index`);
     }
     private windowOpen(url: string): void {
         if (this.windowObjectReference == null || this.windowObjectReference.closed) {
@@ -107,12 +110,5 @@ export class WidgetService {
         } else {
             this.windowObjectReference.focus();
         }
-    }
-    setEnvData(title: string): void {
-        this.env = this.titles.filter(item => item.title === title)[0];
-        this.dataUrl = this.env.url;
-    }
-    setDataData(title: string): void {
-        this.data = this.titles.filter(item => item.title === title)[0];
     }
 }

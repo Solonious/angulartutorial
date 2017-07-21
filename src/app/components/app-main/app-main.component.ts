@@ -12,6 +12,7 @@ import { Widget } from '../../models/widget';
 
 export class AppMainComponent {
     @Input() widgetData: Widget;
+    @Input() envUrl: string;
     widgetFrameParams: any;
     message: string = `Please select widget`;
     constructor(
@@ -23,8 +24,8 @@ export class AppMainComponent {
     openInEditor(widget: string) {
         this.widgetService.showInEditor(widget);
     }
-    createWidget(embedCode: string) {
-        this.widgetFrameParams = this.widgetService.createWidgetData(embedCode);
+    createWidget(embedCode: string, envurl: string) {
+            this.widgetFrameParams = this.widgetService.createWidgetData(embedCode, envurl);
     }
 
 }

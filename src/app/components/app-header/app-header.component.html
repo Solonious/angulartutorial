@@ -1,24 +1,22 @@
 <header class="row">
             <section class="environment col-2">
-                <select #softEnv
-                        (change)="widgetService.setEnvData(softEnv.value);"
-                        class="custom-select mb-2 mr-sm-2 mb-sm-0">
-                    <option *ngFor="let item of widgetService.titles"
+                <select #softEnv (change)="onChange(softEnv.value)" class="custom-select mb-2 mr-sm-2 mb-sm-0">
+                    <option *ngFor="let item of titles"
                             [value]="item.title">{{item.title}}
                     </option>
                 </select>
-                <h2 *ngIf="widgetService.env">{{widgetService.env.type}} soft</h2>
+                <h2 *ngIf="titlesData">{{titlesData.type}} soft</h2>
             </section>
-            <section class="environment col-2">
-                <select #dataEnv
-                        (change)="widgetService.setDataData(dataEnv.value);"
-                        class="custom-select mb-2 mr-sm-2 mb-sm-0">
-                    <option *ngFor="let item of widgetService.titles"
-                            [value]="item.title">{{item.title}}
-                    </option>
-                </select>
-                <h2 *ngIf="widgetService.env">{{widgetService.data.type}} data</h2>
-            </section>
+<!--            <section class="environment col-2">-->
+<!--                <select #dataEnv-->
+<!--                        (change)="widgetService.setDataData(dataEnv.value);"-->
+<!--                        class="custom-select mb-2 mr-sm-2 mb-sm-0">-->
+<!--                    <option *ngFor="let item of widgetService.titles"-->
+<!--                            [value]="item.title">{{item.title}}-->
+<!--                    </option>-->
+<!--                </select>-->
+<!--                <h2 *ngIf="widgetService.env">{{widgetService.data.type}} data</h2>-->
+<!--            </section>-->
         <section class="col-7">
             <section class="row justify-content-end">
                 <h2>release ver. 0.39.90</h2>

@@ -17,5 +17,5 @@
                 frameborder="0"></iframe>
     </section>
 	<textarea #embedcode [(ngModel)]="widgetData.custom_init_code"></textarea>
-	<button  (click)="createWidget(embedcode.value);">Generate widget</button>
+	<button  (click)="createWidget(embedcode.value, envUrl);">Generate widget</button>
 </section>

@@ -30,9 +30,9 @@ export class AppSearchComponent implements OnInit {
     getWidgets(): Observable<Widgets[]> {
         return this.widgetService.getWidgets(100);
     }
-    selectWidget(widget: Widgets) {
+    selectWidget(widget: Widget) {
         this.widgetService.getWidget(widget.slug).subscribe(data => {
-            this.widgetService.createWidgetData(data.custom_init_code);
+            // this.widgetService.createWidgetData(data.custom_init_code);
             this.sendData(data);
         });
     }

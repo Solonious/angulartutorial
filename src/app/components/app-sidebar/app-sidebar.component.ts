@@ -39,7 +39,7 @@ export class AppSidebarComponent implements OnInit {
     onSelectWidget(widget: Widgets): void {
         this.selectedWidget = widget;
         this.widgetService.getWidget(widget.slug).subscribe(data => {
-            this.widgetService.createWidgetData(data.custom_init_code);
+            // this.widgetService.createWidgetData(data.custom_init_code);
             this.sendData(data);
         });
     }

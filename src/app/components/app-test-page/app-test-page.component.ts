@@ -16,4 +16,7 @@ export class AppTestPageComponent {
     setData(data: Widget): void {
         this.widgetService.setData(data);
     }
+    setEnvUrl(url: string): void {
+        this.widgetService.setUrl(url);
+    }
 }

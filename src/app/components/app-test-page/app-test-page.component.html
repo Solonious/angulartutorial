@@ -1,8 +1,8 @@
-<app-header></app-header>
+<app-header (onGetEnvUrl)="setEnvUrl($event)"></app-header>
  <section class="row">
      <section class="col-3">
          <app-search (onGetData)="setData($event);"></app-search>
          <app-sidebar (onGetData)="setData($event);"></app-sidebar>
      </section>
-     <app-main [widgetData]="widgetService.getData()" class="col-9"></app-main>
+     <app-main [widgetData]="widgetService.getData()" [envUrl]="widgetService.getUrl()" class="col-9"></app-main>
  </section>
