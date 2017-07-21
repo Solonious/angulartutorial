@@ -21,10 +21,10 @@ export class WidgetService {
     widgets: Widgets[];
     titles: EnvTitle[] = [
         {title: 'TEST ENV.', url: 'https://freeserv.php-test.site.dukascopy.com', type: 'TEST'},
-        {title: 'LIVE ENV.', url: 'https://freeserv.dukascopy.com', type: 'LIVE'}
+        {title: 'LIVE ENV.', url: 'https://freeserv.dukascopy.com/2.0', type: 'LIVE'}
     ];
     widgetData: Widget;
-    env: EnvTitle = this.titles[0];
+    env: EnvTitle = this.titles[1];
     data: EnvTitle = this.titles[0];
     dataUrl: string = this.env.url || 'https://freeserv.php-test.site.dukascopy.com';
     constructor(

@@ -46,7 +46,7 @@ export class AppSidebarComponent implements OnInit {
     sendData(data: Widget): void {
         this.onGetData.emit(data);
     }
-    setData(data: Widget): void {
-        this.widgetService.setData(data);
-    }
+    // setData(data: Widget): void {
+    //     this.widgetService.setData(data);
+    // }
 }
