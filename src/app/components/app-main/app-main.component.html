@@ -3,10 +3,12 @@
 </section>
 <section *ngIf="widgetData">
 	<section class="row justify-content-between">
-		<h4 class="col-4">{{widgetData.translations[0].title}}</h4>
-		<section class="col-4 align-self-end">
-			<button (click)="openInWindow(widgetData.module_name, envUrl)">new window</button>
-			<button (click)="openInEditor(widgetData.module_name, envUrl)">constructor</button>
+		<h4 class="col-md-4">{{widgetData.translations[0].title}}</h4>
+		<section class="col-md-8">
+            <section class="row justify-content-end">
+                <button (click)="openInWindow(widgetData.module_name, envUrl)">new window</button>
+                <button (click)="openInEditor(widgetData.module_name, envUrl)">constructor</button>
+            </section>
 		</section>
 	</section>
 	<section class="widget-frame" id="widgetFrame">

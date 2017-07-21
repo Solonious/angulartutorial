@@ -8,6 +8,9 @@ h4 {
     color: #000;
     font-weight: 700;
 }
+button {
+    margin-right: 15px;
+}
 .widget-frame {
     overflow: hidden;
     width: 100%;

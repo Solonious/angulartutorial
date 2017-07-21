@@ -1,6 +1,7 @@
 .environment {
     text-align: center;
     line-height: 4.5;
+    min-width: 155px;
 }
 h2 {
     font-size: 1.5rem;

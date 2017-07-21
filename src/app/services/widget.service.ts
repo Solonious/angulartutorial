@@ -10,7 +10,6 @@ import 'rxjs/add/observable/throw';
 import { Categories } from '../models/categories';
 import { Widget } from '../models/widget';
 import { Widgets } from '../models/widgets';
-import { EnvTitle } from '../models/env-title';
 import { WidgetData } from '../models/widget-data';
 
 @Injectable()
@@ -20,9 +19,6 @@ export class WidgetService {
     private categoriesUrl = `categories/list.json`;
     widgets: Widgets[];
     widgetData: Widget;
-    // env: EnvTitle = this.titles[1];
-    // data: EnvTitle = this.titles[0];
-    // dataUrl: string = this.env.url || 'https://freeserv.php-test.site.dukascopy.com';
     envUrl: string;
     constructor(
         private http: Http,
@@ -62,6 +58,11 @@ export class WidgetService {
     getWidget(slug: string): Observable<Widget> {
         return this.http.get(`${this.apiUrl}widget/${slug}`)
             .map(res => res.json() as Widget)
+            .catch(this.handleError);
+    }
+    getVersion(url: string): Observable<any> {
+        return this.http.get(`${url}/?path=common/version`)
+            .map(res => res.json())
             .catch(this.handleError);
     }
     setData(data: Widget): void {

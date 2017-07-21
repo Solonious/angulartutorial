@@ -1,5 +1,5 @@
-<header class="row">
-            <section class="environment col-2">
+<header class="row justify-content-between">
+            <section class="environment col-1">
                 <select #softEnv (change)="onChange(softEnv.value)" class="custom-select mb-2 mr-sm-2 mb-sm-0">
                     <option *ngFor="let item of titles"
                             [value]="item.title">{{item.title}}
@@ -7,20 +7,19 @@
                 </select>
                 <h2 *ngIf="titlesData">{{titlesData.type}} soft</h2>
             </section>
-<!--            <section class="environment col-2">-->
+<!--            <section class="environment col-1">-->
 <!--                <select #dataEnv-->
-<!--                        (change)="widgetService.setDataData(dataEnv.value);"-->
+<!--                        (change)="onChange(softEnv.value);"-->
 <!--                        class="custom-select mb-2 mr-sm-2 mb-sm-0">-->
 <!--                    <option *ngFor="let item of widgetService.titles"-->
 <!--                            [value]="item.title">{{item.title}}-->
 <!--                    </option>-->
 <!--                </select>-->
-<!--                <h2 *ngIf="widgetService.env">{{widgetService.data.type}} data</h2>-->
+<!--                <h2 *ngIf="titlesData">{{titlesData.type}} data</h2>-->
 <!--            </section>-->
-        <section class="col-7">
-            <section class="row justify-content-end">
-                <h2>release ver. 0.39.90</h2>
+        <section class="col-3">
+            <section class="row justify-content-between">
+                <h2 *ngIf="version">release ver. {{version.version}}</h2>
             </section>
         </section>
-
 </header>

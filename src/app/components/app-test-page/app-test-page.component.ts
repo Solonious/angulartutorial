@@ -7,7 +7,8 @@ import { Widget } from '../../models/widget';
 @Component({
     selector: 'app-test-page',
     templateUrl: './app-test-page.component.html',
-    styleUrls: ['./app-test-page.component.css']
+    styleUrls: ['./app-test-page.component.css'],
+    providers: [WidgetService]
 })
 
 export class AppTestPageComponent {
